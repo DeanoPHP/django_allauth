@@ -15,7 +15,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -28,8 +27,10 @@ INSTALLED_APPS = [
     'home',
 
     # Allauth
-    "allauth",
-    "allauth.account",
+    'allauth',
+    'allauth.account',
+
+    'accounts',
 ]
 
 AUTHENTICATION_BACKENDS = [
@@ -79,7 +80,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/6.1/ref/settings/#auth-password-validators
 
@@ -126,6 +126,8 @@ MAILERS = {
     },
 }
 
+LOGIN_REDIRECT_URL = "/"
+
 ACCOUNT_LOGIN_METHODS = {"email"}
 
 ACCOUNT_SIGNUP_FIELDS = [
@@ -134,3 +136,7 @@ ACCOUNT_SIGNUP_FIELDS = [
     "password1*",
     "password2*",
 ]
+
+ACCOUNT_FORMS = {
+    "signup": "accounts.forms.CustomSignupForm",
+}
